@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fcla fda="yes"?>
+<?fcla dl="no"?>
+<!--FDA: The above line consists of instructions for FCLA software which determines whether the package is sent to FDA and/or DAITSS for processing.
+
+  The possible values are
+  <?fcla fda="yes"?>
+  <?fcla dl="yes"?>
+  <?fcla fda="no"?>
+  <?fcla dl="no"?>
+
+  If the fda statement is "yes", the package will be sent to the FDA for processing.
+  If the dl statement is "yes", the package will be sent to PALMM for processing.
+  Both affirmative statements can be used at the same time, so that the package is processed by both the FDA and PALMM.
+  If there are no statements, the package will be sent to both.-->
+<!--METS sample document. For digital audio .wav files packaged with text-->
+<!--Root element contains namespace declarations, prefix associations, schema locations, EntityID and entity type-->
+<METS:mets xmlns:METS="http://www.loc.gov/METS/" xmlns:daitss="http://www.fcla.edu/dls/md/daitss/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:palmm="http://www.fcla.edu/dls/md/palmm/" xmlns:rightsmd="http://www.fcla.edu/dls/md/rightsmd/" xmlns:techmd="http://www.fcla.edu/dls/md/techmd/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OBJID="FI06172001" TYPE="oral" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/mets.xsd  http://purl.org/dc/elements/1.1/ http://dublincore.org/schemas/xmls/simpledc20021212.xsd  http://www.fcla.edu/dls/md/techmd/ http://www.fcla.edu/dls/md/techmd.xsd  http://www.fcla.edu/dls/md/palmm/ http://www.fcla.edu/dls/md/palmm.xsd  http://www.fcla.edu/dls/md/daitss/ http://www.fcla.edu/dls/md/daitss/daitss.xsd http://www.fcla.edu/dls/md/rightsmd/ http://www.fcla.edu/dls/md/rightsmd.xsd">
+  <!--FDA: If specified, The FDA expects an entity type (TYPE) from a controlled vocabulary. Valid values are: aerial, artifact, collection, map, monograph, multipart, photo, postcard, serial, oral and unknown. TYPE is optional, so it can be omitted if desired. -->
+  <METS:metsHdr CREATEDATE="2007-06-18 T09:42:00Z" ID="FI06172001" LASTMODDATE="2007-06-18 T09:42:00Z">
+    <METS:agent ROLE="CREATOR" TYPE="ORGANIZATION">
+      <METS:name>FIU</METS:name>
+    </METS:agent>
+    <METS:agent ROLE="ARCHIVIST" TYPE="INDIVIDUAL">
+      <METS:name>Rogers, Jamie</METS:name>
+    </METS:agent>
+  </METS:metsHdr>
+  <!--All dmdSec have unique IDs. External reference is not required, however title information is reccomended-->
+  <!--Title information contained in separate dmdSec-->
+  <!--FDA: The only required descriptive metadata is title. However, it is best practice to include as much descriptive metadata as is practical.-->
+  <METS:dmdSec ID="DMD1">
+    <METS:mdWrap MDTYPE="DC" MIMETYPE="text/xml">
+      <METS:xmlData>
+        <dc:title>Fernando Mulens Interview</dc:title>
+      </METS:xmlData>
+    </METS:mdWrap>
+  </METS:dmdSec>
+  <!--ORDER OF MD SECS IS IMPORTANT (techMD, rightsMD, sourceMD, digiprovMD)-->
+  <!--amdSec contains numerous techMD sections, each uniquely identified-->
+  <!--FDA: techMD is optional, and is not used by DAITSS which extracts its own comprehensive technical metadata.  You only need these sections if you want to record some technical information for your own future use.  Otherwise, leave them out.-->
+  <METS:amdSec ID="AMD1">
+    <METS:techMD ID="TMD1">
+      <METS:mdWrap MDTYPE="OTHER" OTHERMDTYPE="DAITSS">
+        <METS:xmlData>
+          <daitss:daitss>
+            <daitss:MEDIA_TYPE>
+              <daitss:TYPE>audio/x-wav</daitss:TYPE>
+              <daitss:DESCRIPTION>WAV   audio file</daitss:DESCRIPTION>
+            </daitss:MEDIA_TYPE>
+          </daitss:daitss>
+        </METS:xmlData>
+      </METS:mdWrap>
+    </METS:techMD>
+    <METS:techMD ID="TMD2">
+      <METS:mdWrap MDTYPE="OTHER" OTHERMDTYPE="DAITSS">
+        <METS:xmlData>
+          <daitss:daitss>
+            <daitss:MEDIA_TYPE>
+              <daitss:TYPE>application/msword</daitss:TYPE>
+              <daitss:DESCRIPTION>Microsoft Word</daitss:DESCRIPTION>
+            </daitss:MEDIA_TYPE>
+          </daitss:daitss>
+        </METS:xmlData>
+      </METS:mdWrap>
+    </METS:techMD>
+    <!-- FDA: rightsMD and sourceMD are optional.
+                     However, in this case a rightsMD section may be warranted since there are rights issues to take into account.
+
+                     Below is a sample rightsMD section that shows how to include a copyright statement.
+                     -->
+    <METS:rightsMD ID="RMD1">
+      <METS:mdWrap MDTYPE="OTHER" MIMETYPE="text/xml" OTHERMDTYPE="RIGHTSMD">
+        <METS:xmlData>
+          <rightsmd:copyrightStatement>Copyright 2007? by Cristobal Diaz-Ayala. All rights reserved.</rightsmd:copyrightStatement>
+        </METS:xmlData>
+      </METS:mdWrap>
+    </METS:rightsMD>
+    <!--FDA: For DAITSS processing, the digiprovMD section is required, and must minimally include the account and project code -->
+    <METS:digiprovMD ID="DPMD1">
+      <METS:mdWrap MDTYPE="OTHER" OTHERMDTYPE="DAITSS">
+        <METS:xmlData>
+          <!--daitss root element always used to enclose daitss metadata. All descriptors need agreement information-->
+          <daitss:daitss>
+            <daitss:AGREEMENT_INFO ACCOUNT="FDA" PROJECT="FDA"/>
+          </daitss:daitss>
+        </METS:xmlData>
+      </METS:mdWrap>
+    </METS:digiprovMD>
+  </METS:amdSec>
+  <!-- FDA: It is not necessary to create multiple file groups for each format included in the package, although it can be useful to do so to apply metadata sections to a group as a whole.
+
+        Also note that if the techMD section is removed, it is also necessary to remove the techMD references from ADMID.-->
+  <METS:fileSec>
+    <!--fileSec is grouped by format-->
+    <METS:fileGrp>
+      <!--FDA: Added USE attribute to file element describing intendend use of the file. In this case, the WAV files are the audio masters, and the word documents are the text transcripts. -->
+      <!--WAV group-->
+      <METS:fileGrp ADMID="TMD1">
+        <!--file element includes some technical metadata. xlink:href is used to point to content files using relative system paths. Optional GROUPID is used to relate different representations of underlying content components (wave files and word docs as transcripts). Optional SEQ attribute is also used. Notice references to extension metadata sections using ADMID attribute-->
+        <METS:file CHECKSUM="e08cafac38e6f11c09bbf476c48b8a97" CHECKSUMTYPE="MD5" CREATED="2006-10-20 T16:36:00Z" ID="FID1" MIMETYPE="audio/x-wav" SEQ="1" SIZE="2834678415" USE="AUDIO MASTER">
+          <METS:FLocat LOCTYPE="OTHER" OTHERLOCTYPE="SYSTEM" xlink:href="FI06172001_1.wav"/>
+        </METS:file>
+        <METS:file CHECKSUM="eea92b64c56a25521fb6309b4497a10a" CHECKSUMTYPE="MD5" CREATED="2007-02-19 T15:25:00Z" ID="FID2" MIMETYPE="audio/x-wav" SEQ="2" SIZE="2158221066" USE="AUDIO MASTER">
+          <METS:FLocat LOCTYPE="OTHER" OTHERLOCTYPE="SYSTEM" xlink:href="FI06172001_2.wav"/>
+        </METS:file>
+      </METS:fileGrp>
+      <!--WORD group-->
+      <METS:fileGrp ADMID="TMD2">
+        <METS:file CREATED="2002-03-27 T16:35:59Z" ID="FID3" MIMETYPE="application/msword" SEQ="1" SIZE="139264" USE="TRANSCRIPT">
+          <METS:FLocat LOCTYPE="OTHER" OTHERLOCTYPE="SYSTEM" xlink:href="FI06172001_1.doc"/>
+        </METS:file>
+        <METS:file CHECKSUM="72a530316e57b7b361571ec881dec95c" CHECKSUMTYPE="MD5" CREATED="2007-05-04 T15:01:00Z" ID="FID4" MIMETYPE="application/msword" SEQ="2" SIZE="94208" USE="TRANSCRIPT">
+          <METS:FLocat LOCTYPE="OTHER" OTHERLOCTYPE="SYSTEM" xlink:href="FI06172001_2.doc"/>
+        </METS:file>
+      </METS:fileGrp>
+    </METS:fileGrp>
+  </METS:fileSec>
+  <!--FDA: Added required structMap section. Groups transcript along with the audio. Notice that dmdSecs that apply to all files appear in top level div.
+
+        The top level div contains references to package descriptive metadata, rights and entity type.
+
+        Below that, there are divs for part1 and part2 of the interview, using par tags to identify the WAV as the audio and the word documents as transcripts. -->
+  <METS:structMap>
+    <METS:div ADMID="RMD1" DMDID="DMD1" TYPE="oral">
+      <METS:div LABEL="Interview Part 1">
+        <METS:fptr>
+          <!--FDA: Audio and transcript are related in parallel-->
+          <METS:par>
+            <METS:area FILEID="FID1"/>
+            <METS:area FILEID="FID3"/>
+          </METS:par>
+        </METS:fptr>
+      </METS:div>
+      <METS:div LABEL="Interview Part 2">
+        <METS:fptr>
+          <METS:par>
+            <METS:area FILEID="FID2"/>
+            <METS:area FILEID="FID4"/>
+          </METS:par>
+        </METS:fptr>
+      </METS:div>
+    </METS:div>
+  </METS:structMap>
+</METS:mets>

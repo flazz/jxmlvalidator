@@ -1,0 +1,41 @@
+README for XML Validator
+
+Description
+
+   This package provides:
+
+   * a java package for validating xml and caching of web resources.
+
+   * a command line tool for validating xml documents.
+
+Installation
+
+*  copy this directory to somewhere on the system (/usr/local/opt)
+   % cp -r . /usr/local/opt
+
+*  set the XML_VAL_HOME to that location (/usr/local/opt/xmlvalidator)
+   % export XML_VAL_HOME=/usr/local/opt/xmlvalidator
+
+*  to optionally put the shell script in your path
+   % export PATH=$PATH:$XML_VAL_HOME
+
+Comamnd line validator
+
+*  To validate via the shell script (/bin/sh):
+   % validate FILE
+   to cache the downloaded pages: set XML_VAL_CACHE to a directory for the cache.
+   % export XML_VAL_CACHE=/tmp
+   % validate FILE
+
+*  To validate via the jar (any command line interface):
+   % java -jar xmlvalidator.jar -Dfile=FILE
+   to cache the downloaded pages: specify the webcache jvm property
+   % java -jar xmlvalidator.jar -Dfile=FILE -Dwebcache=DIR
+
+
+fischer: only sequence that works for me here is:
+
+ java  -Dwebcache=/tmp/wc  -Dfile=/tmp/t.xml  -jar xmlvalidator.jar
+
+(I think the -D's are independent, but -jar must be last)
+
