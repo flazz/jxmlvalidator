@@ -24,10 +24,12 @@ public class ValidatorTest {
 		inputStream.close();
 	}
 	
-	@Test(expected=SAXParseException.class)
+	@Test
 	public void illFormed() throws Exception {
 		openResource("illformed.xml");
-		validator.validate(inputStream);
+		Checker checker = validator.validate(inputStream);
+		int errors = checker.getErrors() + checker.getFatals().size();
+		assertNotSame("ill formed xml validated", 0, errors);
 	}
 
 	@Test

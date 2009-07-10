@@ -104,7 +104,15 @@ public class Validator {
 	public Checker validate(File file) throws SAXException, IOException {
 		Checker checker = new Checker();
 		builder.setErrorHandler(checker);
-		builder.parse(file);
+		try { 
+			builder.parse(file);
+		} catch (SAXParseException e) {
+			// Empty catch block reasoning:
+			// Catch any fatal exceptions which are thrown by the parser when
+			// the XML is ill-formed. Throwing an error is required in the
+			// XML specification, so we can't override it. The fatal error will
+			// be logged in the ErrorHandler returned below.
+		}
 		return checker;
 	}
 
@@ -118,7 +126,9 @@ public class Validator {
 	public Checker validate(InputStream is) throws SAXException, IOException {
 		Checker checker = new Checker();
 		builder.setErrorHandler(checker);
-		builder.parse(is);
+		try {
+			builder.parse(is);
+		} catch (SAXParseException e) { /* See note in file validate method */ }
 		return checker;
 	}
 
@@ -134,7 +144,9 @@ public class Validator {
 			throws SAXException, IOException {
 		Checker checker = new Checker();
 		builder.setErrorHandler(checker);
-		builder.parse(is, systemId);
+		try {
+			builder.parse(is, systemId);
+		} catch (SAXParseException e) { /* See note in file validate method */ }
 		return checker;
 	}
 
@@ -148,7 +160,9 @@ public class Validator {
 	public Checker validate(String uri) throws SAXException, IOException {
 		Checker checker = new Checker();
 		builder.setErrorHandler(checker);
-		builder.parse(uri);
+		try {
+			builder.parse(uri);
+		} catch (SAXParseException e) { /* See note in file validate method */ }
 		return checker;
 	}
 
