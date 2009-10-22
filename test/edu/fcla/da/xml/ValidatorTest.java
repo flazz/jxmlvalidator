@@ -28,7 +28,7 @@ public class ValidatorTest {
 	public void illFormed() throws Exception {
 		openResource("illformed.xml");
 		Checker checker = validator.validate(inputStream);
-		int errors = checker.getErrors() + checker.getFatals().size();
+		int errors = checker.getErrors().size() + checker.getFatals().size();
 		assertNotSame("ill formed xml validated", 0, errors);
 	}
 
