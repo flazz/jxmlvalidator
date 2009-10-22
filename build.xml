@@ -1,51 +1,50 @@
 <?xml version="1.0"?>
 <project name="xmlvalidator" default="default">
   <description>validates xml against XMLSchema and DTD, only dependancy is the Java 5 runtime.</description>
-
+  
   <target name="default" depends="clean,dist" description="builds a distribution."/>
-
+  
   <target name="compile" description="compiles the source">
     <mkdir dir="bin"/>
     <javac srcdir="src" destdir="bin"/>
     <javac srcdir="test" destdir="bin">
       <classpath>
-	<fileset dir="lib">
-	  <include name="*.jar" />
-	</fileset>
-	<pathelement path="${java.class.path}"/>
+        <fileset dir="lib">
+          <include name="*.jar"/>
+        </fileset>
+        <pathelement path="${java.class.path}"/>
       </classpath>
     </javac>
   </target>
-
+  
   <target name="clean" description="cleans the binaries and test reports">
     <delete dir="bin" quiet="true"/>
     <delete dir="test/reports" quiet="true"/>
   </target>
-
+  
   <target name="test" depends="compile" description="runs automated tests">
     <mkdir dir="test/reports"/>
     <junit>
-      <!--  	    <jvmarg value="-Djava.endorsed.dirs=endorsed" />  -->
       <classpath>
-	<pathelement location="bin"/>
-	<pathelement location="test"/>
-	<fileset dir="lib">
-	  <include name="*.jar" />
-	</fileset>
-	<pathelement path="${java.class.path}"/>
+        <pathelement location="bin"/>
+        <pathelement location="test"/>
+        <fileset dir="lib">
+          <include name="*.jar"/>
+        </fileset>
+        <pathelement path="${java.class.path}"/>
       </classpath>
       <formatter type="plain"/>
-      <batchtest todir="test/reports"  haltonfailure="false" haltonerror="false">
-	<fileset dir="test" includes="**/*Test*.java"/>
+      <batchtest todir="test/reports" haltonfailure="false" haltonerror="false">
+        <fileset dir="test" includes="**/*Test*.java"/>
       </batchtest>
     </junit>
   </target>
-
+  
   <target name="dist" depends="compile" description="builds the jar distribution">
     <jar destfile="xmlvalidator.jar" basedir="bin">
       <fileset dir="bin" excludes="**/*Test*.class"/>
       <manifest>
-	<attribute name="Built-By" value="${user.name}"/>
+        <attribute name="Built-By" value="${user.name}"/>
         <attribute name="Main-Class" value="edu.fcla.da.xml.Validator"/>
       </manifest>
     </jar>
