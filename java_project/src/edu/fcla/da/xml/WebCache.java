@@ -22,15 +22,19 @@ public class WebCache {
 	public static final String EXPIRATION_PROPERTY = "edu.fcla.webcache.expiration";
 	
 	private static final long EXPIRATION_DEFAULT = 1000 * 60 * 60 * 24 * 7;
-	
-	static {
-		System.setProperty(EXPIRATION_PROPERTY, Long.toString(EXPIRATION_DEFAULT));
-	}
-	
+		
 	private File root;
 
 	private static long expiration() {
-		return Long.parseLong(System.getProperty(EXPIRATION_PROPERTY));
+	    Long expr;
+	    if (System.getProperty(EXPIRATION_PROPERTY) != null) {
+	        String property = System.getProperty(EXPIRATION_PROPERTY);
+	        expr = Long.parseLong(property);
+	    } else {
+	        expr = EXPIRATION_DEFAULT;
+	    }
+	    
+	    return expr;
 	}
 	
 	/**

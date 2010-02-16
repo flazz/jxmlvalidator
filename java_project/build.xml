@@ -6,7 +6,7 @@
   
   <target name="compile" description="compiles the source">
     <mkdir dir="bin"/>
-    <javac srcdir="src" destdir="bin"/>
+    <javac srcdir="src" destdir="bin" debug="true" debuglevel="lines,vars,source"/>
     <javac srcdir="test" destdir="bin">
       <classpath>
         <fileset dir="lib">

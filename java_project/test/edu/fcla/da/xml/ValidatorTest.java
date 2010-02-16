@@ -60,6 +60,14 @@ public class ValidatorTest {
 		}		
 
 	}
+    
+    @Test
+    public void customSchemaLocation() throws Exception {
+        openResource("tcf.xml");
+        Checker checker = validator.validate(inputStream);
+		assertEquals("valid xml has errors", 0, checker.getErrors().size());
+		assertEquals("valid xml has fatal errors", 0, checker.getFatals().size());
+    }
 
 	private void openResource(String name) {
 		inputStream = getClass().getResourceAsStream("files/" + name);

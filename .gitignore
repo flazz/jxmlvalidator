@@ -1,3 +1,9 @@
-bin
-xmlvalidator.jar
-test/reports
+*.gem
+pkg
+*.log
+*.tmproj
+.test-stack
+*.swp
+*.swo
+tags
+coverage
