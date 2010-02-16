@@ -10,6 +10,7 @@ quickstart
 ----------
 
     require 'jxml/validator'
+
     val = JXML::Validator.new
     results = val.validate some_big_nasty_xml
     
@@ -24,4 +25,3 @@ TODO
 - cache feature (already implemented in java, need ruby to hook into it)
 - xml parsing options
 - command line tool
-- make gem
