@@ -7,15 +7,19 @@ module JXML
 
     JAR_FILE = File.join File.dirname(__FILE__), '..', '..', 'ext', 'xmlvalidator.jar'
 
-    # setup rjb validator
-    ENV['CLASSPATH'] = if ENV['CLASSPATH']
-                         "#{JAR_FILE}:#{ENV['CLASSPATH']}"
-                       else
-                         JAR_FILE
-                       end
+    def Validator.load_validator_class
+      j_URI = Rjb.import 'java.net.URL'
+      uri = j_URI.new "file://#{File.expand_path JAR_FILE}"
 
-    J_File = Rjb.import 'java.io.File' 
-    J_Validator = Rjb.import 'edu.fcla.da.xml.Validator'
+      j_URLClassLoader = Rjb.import 'java.net.URLClassLoader'
+      loader = j_URLClassLoader.new [uri]
+
+      j_Class = Rjb.import 'java.lang.Class'
+      j_Class.forName "edu.fcla.da.xml.Validator", true, loader
+    end
+
+    J_File = Rjb.import 'java.io.File'
+    J_Validator = load_validator_class
 
     def initialize
       @jvalidator = J_Validator.new
@@ -47,12 +51,12 @@ module JXML
     def j2r ja
 
       (0...ja.size).map do |n|
-        e = ja.elementAt n 
+        e = ja.elementAt n
 
         {
-          :line => e.getLineNumber, 
+          :line => e.getLineNumber,
           :message => e.getMessage,
-          :column => e.getColumnNumber 
+          :column => e.getColumnNumber
         }
 
       end
