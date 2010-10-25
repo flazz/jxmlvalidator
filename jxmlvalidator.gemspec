@@ -7,15 +7,15 @@ Gem::Specification.new do |spec|
   spec.email = "flazzarino@gmail.com"
   spec.homepage = 'http://github.com/flazz/jxmlvalidator'
   spec.authors = ["Francesco Lazzarino"]
-  
+
   spec.files = [
     "README.md",
     "ext/xmlvalidator.jar",
-    "jxmlvalidator.gemspec", 
+    "jxmlvalidator.gemspec",
     "lib/jxml/validator.rb",
     "spec/jxml/validator_spec.rb"
   ]
 
-  spec.add_dependency 'rjb', '~> 1.2.0'
+  spec.add_dependency 'rjb', '~> 1.2'
   spec.requirements << 'a Java environment with JAXP'
 end
